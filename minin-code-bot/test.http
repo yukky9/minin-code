@@ -1,0 +1,9 @@
+###
+POST http://kowlad123321456654.tplinkdns.com:11434/api/generate
+Content-Type: application/json
+
+{
+  "model": "llama3",
+  "prompt": "Привет))",
+  "stream": false
+}
