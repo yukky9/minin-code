@@ -1,0 +1,45 @@
+name: "minin-code"
+
+services:
+  api:
+    container_name: api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    env_file:
+      - ./config/.env.api
+    ports:
+      - "1233:1233"
+    volumes:
+      - .:/app
+    networks:
+      - backend
+
+#  database:
+#    container_name: database
+#    image: postgres
+#    restart: unless-stopped
+#    env_file:
+#      - config/.env.database
+#    port:
+#      - "5432:5432"
+#    volumes:
+#      - db_data:/var/lib/postgresql/data
+#    networks:
+#      - backend
+#
+#  adminer:
+#    container_name: adminer
+#    image: adminer
+#    restart: unless-stopped
+#    ports:
+#      - "8081:8080"
+#    depends_on:
+#      - database
+#    networks:
+#      - backend
+
+networks:
+  backend:
+    name: backend
